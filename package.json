@@ -1,0 +1,9 @@
+{
+  "name": "aqtest-api",
+  "version": "1.0",
+  "description": "API testing",
+  "author": "Nick DelRossi",
+  "devDependencies": {
+    "request": "^2.72.0"
+  }
+}
