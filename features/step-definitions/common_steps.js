@@ -3,22 +3,23 @@ var request = require('request');
 module.exports = function () {
   var genre;
 
-  this.Given(/^I make an API call to spotify$/, function () {
+  this.Given(/^I make an API call to spotify$/, function (next) {
 
-    request('https://api.spotify.com/v1/search?q=arcade%20fire&type=artist', function (error, response, body) {
+      request('https://api.spotify.com/v1/search?q=arcade%20fire&type=artist', function (error, response, body) {
 
-      expect(response).to.not.be.undefined;
-      expect(response.statusCode).to.equal(200);
+        expect(response).to.not.be.undefined;
+        expect(response.statusCode).to.equal(200);
 
-      if (!error) {
-        artistResponse = JSON.parse(body);
-      }
+        if (!error) {
+          artistResponse = JSON.parse(body);
+        }
 
-      genre = artistResponse.artists.items[0].genres[0];
+        genre = artistResponse.artists.items[0].genres[0];
 
-      expect(genre).to.contain('chamber pop');
-    })
+        expect(genre).to.contain('chamber pop');
 
+        next();
+      })
   });
 
   this.Given(/^I navigate to wikipedia$/, function () {
